@@ -41,6 +41,10 @@ input {
     width: 100px;
 }
 
+.dice-display {
+    max-width: 600px;
+}
+
 label {
     width: 200px;
 }
