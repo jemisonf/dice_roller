@@ -26,11 +26,11 @@ body {
 
 button {
     border: 1px solid #27AE60;
-    color: #27AE60;
-    background-color: transparent;
+    background-color: #27AE60;
+    color: white;
     border-radius: 30px;
     font-size: 20px;
-    padding: 5px 10px;
+    padding: 8px 25px;
 }
 
 input {
@@ -46,7 +46,7 @@ label {
 }
 
 .dice-display i {
-    margin: 0px 10px;
+    margin: 5px 10px;
 }
 
 .fa-dice-six, .fa-dice-five {
@@ -63,4 +63,35 @@ label {
 
 .dice-input {
     width: 400px;
+}
+
+@media only screen and (max-width: 800px) {
+    body {
+        font-size: 20px;
+    }
+    label {
+        font-size: 30px;
+    }
+
+    input {
+        width: 100px;
+    }
+
+    button {
+        font-size: 30px;
+    }
+
+    .numerical-output {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .numerical-output * {
+        width: 50%;
+    }
+
+    .flex-row {
+        margin-bottom: 10px;
+    }
 }
