@@ -1,0 +1,66 @@
+body {
+    font-family: 'Merriweather Sans', sans-serif;
+    font-size: 15px;
+    margin: 50px;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.flex-row .space-around {
+    justify-content: space-around;
+}
+
+button {
+    border: 1px solid #27AE60;
+    color: #27AE60;
+    background-color: transparent;
+    border-radius: 30px;
+    font-size: 20px;
+    padding: 5px 10px;
+}
+
+input {
+    border: 1px solid black;
+    margin-left: 20px;
+    border-radius: 30px;
+    padding: 5px 10px;
+    width: 100px;
+}
+
+label {
+    width: 200px;
+}
+
+.dice-display i {
+    margin: 0px 10px;
+}
+
+.fa-dice-six, .fa-dice-five {
+    color: #27AE60;
+}
+
+.fa-dice-one {
+    color: #E74C3C;
+}
+
+.roll-result {
+    margin-left: 20px;
+}
+
+.dice-input {
+    width: 400px;
+}

@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="index.css">
+        <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="main">
+            <div class="flex-row">
+                <h1>Shadowrun Dice Roller</h1>
+            </div>
+            <form class="dice-input">
+                <div class="flex-row space-around">
+                    <label for="dice">Dice Pool: </label>
+                    <input type="number" id="dice" name="num_dice" value=0>
+                </div>
+                <div class="flex-row space-around">
+                    <label for="modifier">Modifier: </label>
+                    <input type="number" id="modifier" name="dice_modifier" value=0>
+                </div>
+                <div class="flex-row">
+                    <button id="roll-dice">Roll</button>
+                </div>
+            </form>
+            <div class="output">
+                <div class="flex-row dice-display">
+
+                </div>
+                <div class="numerical-output">
+                    <div class="flex-row">
+                        <h2>Hits: <span class="roll-result num-hits">0</span></h2>
+                    </div>
+                    <div class="flex-row">
+                        <h2>Sum: <span class="roll-result sum">0</span></h2>
+                    </div>
+                    
+                </div>
+            </div>
+
+        </div>
+    
+        <script src="index.js"></script>
+    </body>
+</html>
