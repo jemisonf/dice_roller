@@ -23,7 +23,7 @@ document.querySelector("#roll-dice").addEventListener("click", function(e) {
         var newDie = document.createElement("i");
         newDie.classList.add("fa-dice-" + diceValues[element]);
         newDie.classList.add("fas");
-        newDie.classList.add("fa-2x");
+        newDie.classList.add("fa-3x");
         document.querySelector('.dice-display').appendChild(newDie);
     })
     numHits = 0;
