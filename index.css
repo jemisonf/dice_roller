@@ -31,8 +31,8 @@ body {
 }
 
 button {
-    border: 1px solid #27AE60;
-    background-color: #27AE60;
+    border: 1px solid #0D683C;
+    background-color: #0D683C;
     color: white;
     border-radius: 30px;
     font-size: 20px;
@@ -60,11 +60,11 @@ label {
 }
 
 .fa-dice-six, .fa-dice-five {
-    color: #27AE60;
+    color: #0D683C;
 }
 
 .fa-dice-one {
-    color: #E74C3C;
+    color: #D12C1A;
 }
 
 .roll-result {
