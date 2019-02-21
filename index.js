@@ -1,3 +1,20 @@
+var asyncLoadFontAwesome = function() {
+    headElement = document.getElementsByTagName("head")[0];
+    linkElement = document.createElement("link");
+    linkElement.rel = "stylesheet";
+    linkElement.href = "https://use.fontawesome.com/releases/v5.2.0/css/all.css";
+    linkElement.integrity = "sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ";
+    linkElement.crossOrigin = "anonymous";
+    headElement.appendChild(linkElement);
+};
+
+var raf = requestAnimationFrame || mozRequestAnimationFrame || webkitRequestAnimationFrame || msRequestAnimationFrame;
+if (raf) {
+    raf(asyncLoadFontAwesome);
+} else {
+    window.addEventListener("load", asyncLoadFontAwesome);
+}
+
 document.querySelector("#roll-dice").addEventListener("click", function(e) {
     e.preventDefault();
     diceValues = {
