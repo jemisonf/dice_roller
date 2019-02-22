@@ -15,12 +15,14 @@ if (raf) {
     window.addEventListener("load", asyncLoadFontAwesome);
 }
 
-document.querySelector("#roll-dice").addEventListener("click", function(e) {
-    e.preventDefault();
-    alert = document.querySelector("#glitch-alert");
-    if (!alert.classList.contains("hidden")) {
-        alert.classList.add("hidden");
+function clearChildren(queryString) {
+    parent = document.querySelector(queryString);
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
     }
+}
+
+function appendDice(rolls, queryString) {
     diceValues = {
         1: "one",
         2: "two",
@@ -29,28 +31,32 @@ document.querySelector("#roll-dice").addEventListener("click", function(e) {
         5: "five",
         6: "six",
     }
+    rolls.forEach(roll => {
+        var newDie = document.createElement("i");
+        newDie.classList.add(`fa-dice-${diceValues[roll]}`, "fas", "fa-3x");
+        document.querySelector(queryString).appendChild(newDie);
+    })
+}
+
+document.querySelector("#roll-dice").addEventListener("click", function(e) {
+    e.preventDefault();
+    alert = document.querySelector("#glitch-alert");
+    if (!alert.classList.contains("hidden")) {
+        alert.classList.add("hidden");
+    }
     numDice = parseInt(document.querySelector("#dice").value);
     diceModifier = parseInt(document.querySelector("#modifier").value);
-    onesRolled = 0;
     results = [];
+    onesRolled = 0;
+    numHits = 0;
     for (var i = 0; i < numDice; i++) {
         result = Math.floor(Math.random() * Math.floor(6)) + 1;
         if (result == 1) onesRolled++;
+        if (result > 4) numHits++;
         results.push(result);
     }
-    resultsDiv = document.querySelector(".dice-display");
-    while (resultsDiv.firstChild) {
-        resultsDiv.removeChild(resultsDiv.firstChild);
-    }
-    results.forEach(element => {
-        var newDie = document.createElement("i");
-        newDie.classList.add("fa-dice-" + diceValues[element]);
-        newDie.classList.add("fas");
-        newDie.classList.add("fa-3x");
-        document.querySelector('.dice-display').appendChild(newDie);
-    })
-    numHits = 0;
-    results.forEach(element => element > 4 ? numHits++ : numHits);
+    clearChildren(".dice-display");
+    appendDice(results, '.dice-display');
     document.querySelector(".num-hits").textContent = numHits;
     sum = 0;
     results.forEach(element => sum += element);
@@ -59,7 +65,6 @@ document.querySelector("#roll-dice").addEventListener("click", function(e) {
     console.log(onesRolled);
     console.log(Math.floor(numDice / 2));
     if (onesRolled >= Math.ceil(numDice / 2)) {
-        console.log("glitch!!");
         document.querySelector("#glitch-alert").classList.remove("hidden");
     }
 });
