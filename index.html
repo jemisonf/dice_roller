@@ -8,6 +8,7 @@
         -->
         <link rel="shortcut icon" href="favicon.ico">
         <meta name="viewport" content="width=device-width">
+        <meta charset="utf-8">
         <meta name="google-site-verification" content="Qcw4r3PyNiUh4IKd3fDjf4vzDSVJmSX62hreCYolMms" />
         <meta name="Description" content="An app for generating dice pool rolls">
         <title>Shadowrun Dice Roller</title>
@@ -35,6 +36,9 @@
 
                 </div>
                 <div class="numerical-output">
+                    <div class="alert hidden" id="glitch-alert">
+                        <i class="fas fa-exclamation-triangle"></i>  GLITCH
+                    </div>
                     <div class="flex-row">
                         <h2>Hits: <span class="roll-result num-hits">0</span></h2>
                     </div>
@@ -47,7 +51,7 @@
 
         </div>
         <footer class="footer">
-           <p>Created by <a href="github.com/jemisonf">Fischer Jemison</a></p> 
+           <p>Created by <a href="https://fgj.codes">Fischer Jemison</a></p> 
         </footer>
     
         <script src="index.js"></script>

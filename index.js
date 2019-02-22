@@ -17,6 +17,10 @@ if (raf) {
 
 document.querySelector("#roll-dice").addEventListener("click", function(e) {
     e.preventDefault();
+    alert = document.querySelector("#glitch-alert");
+    if (!alert.classList.contains("hidden")) {
+        alert.classList.add("hidden");
+    }
     diceValues = {
         1: "one",
         2: "two",
@@ -27,9 +31,11 @@ document.querySelector("#roll-dice").addEventListener("click", function(e) {
     }
     numDice = parseInt(document.querySelector("#dice").value);
     diceModifier = parseInt(document.querySelector("#modifier").value);
+    onesRolled = 0;
     results = [];
     for (var i = 0; i < numDice; i++) {
         result = Math.floor(Math.random() * Math.floor(6)) + 1;
+        if (result == 1) onesRolled++;
         results.push(result);
     }
     resultsDiv = document.querySelector(".dice-display");
@@ -50,4 +56,10 @@ document.querySelector("#roll-dice").addEventListener("click", function(e) {
     results.forEach(element => sum += element);
     sum += diceModifier;
     document.querySelector(".sum").textContent = sum;
+    console.log(onesRolled);
+    console.log(Math.floor(numDice / 2));
+    if (onesRolled >= Math.ceil(numDice / 2)) {
+        console.log("glitch!!");
+        document.querySelector("#glitch-alert").classList.remove("hidden");
+    }
 });

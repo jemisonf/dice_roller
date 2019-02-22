@@ -30,6 +30,17 @@ body {
     justify-content: space-around;
 }
 
+.alert {
+    background-color: #F2E0DE;
+    border: 1px solid #E3BAB5;
+    color: #D12C1A;
+    display: flex;
+    justify-content: center;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border-radius: 5px;
+}
+
 button {
     border: 1px solid #0D683C;
     background-color: #0D683C;
@@ -104,4 +115,8 @@ label {
     .flex-row {
         margin-bottom: 10px;
     }
+}
+
+.hidden {
+    display: none;
 }
