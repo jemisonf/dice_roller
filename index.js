@@ -90,3 +90,7 @@ document.querySelector("#roll-dice").addEventListener("click", function(e) {
     setGlitchAlert(onesRolled, numDice);
     updateNumericalOutput(hits, sum);
 });
+
+document.querySelectorAll('input[type="number"]').forEach(input => {
+    input.addEventListener("focus", e => input.value = "");
+})
