@@ -23,7 +23,7 @@ function clearChildren(queryString) {
 }
 
 function appendDice(rolls, queryString) {
-    diceValues = {
+    diceClasses = {
         1: "one",
         2: "two",
         3: "three",
@@ -33,38 +33,60 @@ function appendDice(rolls, queryString) {
     }
     rolls.forEach(roll => {
         var newDie = document.createElement("i");
-        newDie.classList.add(`fa-dice-${diceValues[roll]}`, "fas", "fa-3x");
+        newDie.classList.add(`fa-dice-${diceClasses[roll]}`, "fas", "fa-3x");
         document.querySelector(queryString).appendChild(newDie);
     })
 }
 
-document.querySelector("#roll-dice").addEventListener("click", function(e) {
-    e.preventDefault();
+function setGlitchAlert(onesRolled, totalDice) {
+    alert = document.querySelector("#glitch-alert");
+    if (onesRolled >= Math.ceil(totalDice / 2)) {
+        document.querySelector("#glitch-alert").classList.remove("hidden");
+    }
+}
+function calculateSum(rolls, modifier) {
+    sum = rolls.reduce((partialSum, roll) => partialSum += roll);
+    return  sum + modifier;
+}
+
+function updateNumericalOutput(numberOfHits, totalSum) {
+    document.querySelector(".num-hits").textContent = numberOfHits;
+    document.querySelector(".sum").textContent = totalSum;
+}
+
+function generateRolls(numRolls) {
+    let onesRolled = 0;
+    let numHits = 0;
+    rolls = Array.from(new Array(numRolls), (roll) => {
+        roll = Math.floor(Math.random() * Math.floor(6) + 1);
+        if (roll == 1) onesRolled++;
+        if (roll > 4) numHits++;
+        return roll;
+    })
+    return {rolls: rolls, onesRolled: onesRolled, hits: numHits};
+}
+
+function hideGlitchAlert() {
     alert = document.querySelector("#glitch-alert");
     if (!alert.classList.contains("hidden")) {
         alert.classList.add("hidden");
     }
-    numDice = parseInt(document.querySelector("#dice").value);
-    diceModifier = parseInt(document.querySelector("#modifier").value);
-    results = [];
-    onesRolled = 0;
-    numHits = 0;
-    for (var i = 0; i < numDice; i++) {
-        result = Math.floor(Math.random() * Math.floor(6)) + 1;
-        if (result == 1) onesRolled++;
-        if (result > 4) numHits++;
-        results.push(result);
-    }
+}
+
+function readInputs() {
+    let numDice = parseInt(document.querySelector("#dice").value);
+    let diceModifier = parseInt(document.querySelector("#modifier").value);
+    return {numDice: numDice, diceModifier: diceModifier};
+}
+
+document.querySelector("#roll-dice").addEventListener("click", function(e) {
+    e.preventDefault();
+    hideGlitchAlert();
+    let {numDice, diceModifier} = readInputs();
+    let {rolls, onesRolled, hits} = generateRolls(numDice);
+    let sum = calculateSum(rolls, diceModifier);
     clearChildren(".dice-display");
-    appendDice(results, '.dice-display');
-    document.querySelector(".num-hits").textContent = numHits;
-    sum = 0;
-    results.forEach(element => sum += element);
-    sum += diceModifier;
-    document.querySelector(".sum").textContent = sum;
-    console.log(onesRolled);
-    console.log(Math.floor(numDice / 2));
-    if (onesRolled >= Math.ceil(numDice / 2)) {
-        document.querySelector("#glitch-alert").classList.remove("hidden");
-    }
+    appendDice(rolls, '.dice-display');
+    setGlitchAlert(onesRolled, numDice);
+    updateNumericalOutput(hits, sum);
 });
