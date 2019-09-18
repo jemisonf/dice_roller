@@ -1,18 +1,44 @@
-var asyncLoadFontAwesome = function() {
-    headElement = document.getElementsByTagName("head")[0];
-    linkElement = document.createElement("link");
-    linkElement.rel = "stylesheet";
-    linkElement.href = "https://use.fontawesome.com/releases/v5.2.0/css/all.css";
-    linkElement.integrity = "sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ";
-    linkElement.crossOrigin = "anonymous";
-    headElement.appendChild(linkElement);
-};
-
-var raf = requestAnimationFrame || mozRequestAnimationFrame || webkitRequestAnimationFrame || msRequestAnimationFrame;
-if (raf) {
-    raf(asyncLoadFontAwesome);
-} else {
-    window.addEventListener("load", asyncLoadFontAwesome);
+function getInnerDieSVG(number) {
+    switch (number) {
+        case "one":
+            return (`<rect x="43" y="43" width="15" height="15" rx="7.5" fill="white"></rect>`)
+        case "two":
+            return (`
+                    <rect x="63" y="23" width="15" height="15" rx="7.5" fill="white" ></rect>
+                    <rect x="23" y="63" width="15" height="15" rx="7.5" fill="white" ></rect>`)
+        case "three":
+            return (`
+                    <rect x="63" y="23" width="15" height="15" rx="7.5" fill="white" ></rect>
+                    <rect x="23" y="63" width="15" height="15" rx="7.5" fill="white" ></rect>
+                    <rect x="43" y="43" width="15" height="15" rx="7.5" fill="white" ></rect>`)
+        case "four":
+            return (`
+                    <rect x="23" y="23" width="15" height="15" rx="7.5" fill="white" ></rect>
+                    <rect x="63" y="63" width="15" height="15" rx="7.5" fill="white" ></rect>
+                    <rect x="63" y="23" width="15" height="15" rx="7.5" fill="white" ></rect>
+                    <rect x="23" y="63" width="15" height="15" rx="7.5" fill="white" ></rect>`)
+        case "five":
+            return (`
+                    <rect x="23" y="23" width="15" height="15" rx="7.5" fill="white" ></rect>
+                    <rect x="63" y="63" width="15" height="15" rx="7.5" fill="white" ></rect>
+                    <rect x="63" y="23" width="15" height="15" rx="7.5" fill="white" ></rect>
+                    <rect x="23" y="63" width="15" height="15" rx="7.5" fill="white" ></rect>
+                    <rect x="43" y="43" width="15" height="15" rx="7.5" fill="white" ></rect>`)
+        case "six":
+            return (`
+                    <rect x="23" y="23" width="15" height="15" rx="7.5" fill="white" ></rect>
+                    <rect x="63" y="63" width="15" height="15" rx="7.5" fill="white" ></rect>
+                    <rect x="63" y="23" width="15" height="15" rx="7.5" fill="white" ></rect>
+                    <rect x="23" y="63" width="15" height="15" rx="7.5" fill="white" ></rect>
+                    <rect x="63" y="43" width="15" height="15" rx="7.5" fill="white" ></rect>
+                    <rect x="23" y="43" width="15" height="15" rx="7.5" fill="white" ></rect>`)
+    }
+}
+function getDieSVG(number) {
+    let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg")
+    svg.innerHTML = `<rect class="body" width="100" height="100" rx="15"></rect>`
+    svg.innerHTML += getInnerDieSVG(number)
+    return svg
 }
 
 function clearChildren(queryString) {
@@ -32,8 +58,10 @@ function appendDice(rolls, queryString) {
         6: "six",
     }
     rolls.forEach(roll => {
-        var newDie = document.createElement("i");
-        newDie.classList.add(`fa-dice-${diceClasses[roll]}`, "fas", "fa-3x");
+        var dieString = getDieSVG(diceClasses[roll]);
+        var newDie = document.createElement("div");
+        newDie.classList.add("die", `die-${diceClasses[roll]}`);
+        newDie.appendChild(dieString);
         document.querySelector(queryString).appendChild(newDie);
     })
 }
@@ -46,7 +74,7 @@ function setGlitchAlert(onesRolled, totalDice) {
 }
 function calculateSum(rolls, modifier) {
     sum = rolls.reduce((partialSum, roll) => partialSum += roll);
-    return  sum + modifier;
+    return sum + modifier;
 }
 
 function updateNumericalOutput(numberOfHits, totalSum) {
@@ -63,7 +91,7 @@ function generateRolls(numRolls) {
         if (roll > 4) numHits++;
         return roll;
     })
-    return {rolls: rolls, onesRolled: onesRolled, hits: numHits};
+    return { rolls: rolls, onesRolled: onesRolled, hits: numHits };
 }
 
 function hideGlitchAlert() {
@@ -76,14 +104,14 @@ function hideGlitchAlert() {
 function readInputs() {
     let numDice = parseInt(document.querySelector("#dice").value);
     let diceModifier = parseInt(document.querySelector("#modifier").value);
-    return {numDice: numDice, diceModifier: diceModifier};
+    return { numDice: numDice, diceModifier: diceModifier };
 }
 
-document.querySelector("#roll-dice").addEventListener("click", function(e) {
+document.querySelector("#roll-dice").addEventListener("click", function (e) {
     e.preventDefault();
     hideGlitchAlert();
-    let {numDice, diceModifier} = readInputs();
-    let {rolls, onesRolled, hits} = generateRolls(numDice);
+    let { numDice, diceModifier } = readInputs();
+    let { rolls, onesRolled, hits } = generateRolls(numDice);
     let sum = calculateSum(rolls, diceModifier);
     clearChildren(".dice-display");
     appendDice(rolls, '.dice-display');

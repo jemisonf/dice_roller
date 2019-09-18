@@ -1,6 +1,8 @@
 body {
     font-family: sans-serif;
     font-size: 15px;
+    padding: 0;
+    margin: 0;
 }
 
 h1 {
@@ -75,12 +77,27 @@ label {
     margin: 5px 10px;
 }
 
-.fa-dice-six, .fa-dice-five {
-    color: #0D683C;
+.die {
+    height: 50px;
+    width: 50px;
+    margin: 5px;
 }
 
-.fa-dice-one {
-    color: #D12C1A;
+.die svg {
+    height: 100px;
+    width: 100px;
+    transform: scale(0.5) translate(-50px, -50px);
+}
+
+.die .body {
+    fill: black;
+}
+.die-six .body, .die-five .body {
+    fill: #0D683C;
+}
+
+.die-one .body {
+    fill: #D12C1A;
 }
 
 .roll-result {

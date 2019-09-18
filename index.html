@@ -1,59 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" type="text/css" href="index.css">
-        <!--
+
+<head>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <!--
         <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="">
         -->
-        <link rel="shortcut icon" href="favicon.ico">
-        <meta name="viewport" content="width=device-width">
-        <meta charset="utf-8">
-        <meta name="google-site-verification" content="Qcw4r3PyNiUh4IKd3fDjf4vzDSVJmSX62hreCYolMms" />
-        <meta name="Description" content="An app for generating dice pool rolls">
-        <title>Shadowrun Dice Roller</title>
-    </head>
-    <body>
-        <div class="main">
-            <div class="flex-row">
-                <h1>Shadowrun Dice Roller</h1>
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="viewport" content="width=device-width">
+    <meta charset="utf-8">
+    <meta name="google-site-verification" content="Qcw4r3PyNiUh4IKd3fDjf4vzDSVJmSX62hreCYolMms" />
+    <meta name="Description" content="An app for generating dice pool rolls">
+    <title>Shadowrun Dice Roller</title>
+</head>
+
+<body>
+    <div class="main">
+        <div class="flex-row">
+            <h1>Shadowrun Dice Roller</h1>
+        </div>
+        <form class="dice-input">
+            <div class="flex-row space-around">
+                <label for="dice">Dice Pool: </label>
+                <input type="number" id="dice" name="num_dice" value=0>
             </div>
-            <form class="dice-input">
-                <div class="flex-row space-around">
-                    <label for="dice">Dice Pool: </label>
-                    <input type="number" id="dice" name="num_dice" value=0>
-                </div>
-                <div class="flex-row space-around">
-                    <label for="modifier">Modifier: </label>
-                    <input type="number" id="modifier" name="dice_modifier" value=0>
+            <div class="flex-row space-around">
+                <label for="modifier">Modifier: </label>
+                <input type="number" id="modifier" name="dice_modifier" value=0>
+            </div>
+            <div class="flex-row">
+                <button id="roll-dice">Roll</button>
+            </div>
+        </form>
+        <div class="output">
+            <div class="flex-row dice-display">
+
+            </div>
+            <div class="numerical-output">
+                <div class="alert hidden" id="glitch-alert">
+                    GLITCH
                 </div>
                 <div class="flex-row">
-                    <button id="roll-dice">Roll</button>
+                    <h2>Hits: <span class="roll-result num-hits">0</span></h2>
                 </div>
-            </form>
-            <div class="output">
-                <div class="flex-row dice-display">
+                <div class="flex-row">
+                    <h2>Sum: <span class="roll-result sum">0</span></h2>
+                </div>
 
-                </div>
-                <div class="numerical-output">
-                    <div class="alert hidden" id="glitch-alert">
-                        <i class="fas fa-exclamation-triangle"></i>  GLITCH
-                    </div>
-                    <div class="flex-row">
-                        <h2>Hits: <span class="roll-result num-hits">0</span></h2>
-                    </div>
-                    <div class="flex-row">
-                        <h2>Sum: <span class="roll-result sum">0</span></h2>
-                    </div>
-                    
-                </div>
             </div>
-
         </div>
-        <footer class="footer">
-           <p>Created by <a href="https://fgj.codes">Fischer Jemison</a></p> 
-        </footer>
-    
-        <script src="index.js"></script>
-    </body>
+
+    </div>
+    <footer class="footer">
+        <p>Created by <a href="https://fgj.codes">Fischer Jemison</a></p>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+
 </html>
