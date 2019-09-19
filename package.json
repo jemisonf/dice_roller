@@ -1,0 +1,26 @@
+{
+  "name": "dice_roller",
+  "version": "1.0.0",
+  "description": "a shadowrun dice roller",
+  "main": "index.html",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com//jemisonf/dice_roller"
+  },
+  "scripts": {
+    "build": "gulp"
+  },
+  "author": "Fischer Jemison",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-cli": "^2.2.0",
+    "gulp-csso": "^3.0.1",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-minify": "^3.1.0",
+    "gulp-uglify": "^3.0.2"
+  }
+}
