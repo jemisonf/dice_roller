@@ -3,30 +3,25 @@ function getInnerDieSVG(number) {
         case "one":
             return (`<rect x="43" y="43" width="15" height="15" rx="7.5" fill="white"></rect>`)
         case "two":
-            return (`
-                    <rect x="63" y="23" width="15" height="15" rx="7.5" fill="white" ></rect>
+            return (`<rect x="63" y="23" width="15" height="15" rx="7.5" fill="white" ></rect>
                     <rect x="23" y="63" width="15" height="15" rx="7.5" fill="white" ></rect>`)
         case "three":
-            return (`
-                    <rect x="63" y="23" width="15" height="15" rx="7.5" fill="white" ></rect>
+            return (`<rect x="63" y="23" width="15" height="15" rx="7.5" fill="white" ></rect>
                     <rect x="23" y="63" width="15" height="15" rx="7.5" fill="white" ></rect>
                     <rect x="43" y="43" width="15" height="15" rx="7.5" fill="white" ></rect>`)
         case "four":
-            return (`
-                    <rect x="23" y="23" width="15" height="15" rx="7.5" fill="white" ></rect>
+            return (`<rect x="23" y="23" width="15" height="15" rx="7.5" fill="white" ></rect>
                     <rect x="63" y="63" width="15" height="15" rx="7.5" fill="white" ></rect>
                     <rect x="63" y="23" width="15" height="15" rx="7.5" fill="white" ></rect>
                     <rect x="23" y="63" width="15" height="15" rx="7.5" fill="white" ></rect>`)
         case "five":
-            return (`
-                    <rect x="23" y="23" width="15" height="15" rx="7.5" fill="white" ></rect>
+            return (`<rect x="23" y="23" width="15" height="15" rx="7.5" fill="white" ></rect>
                     <rect x="63" y="63" width="15" height="15" rx="7.5" fill="white" ></rect>
                     <rect x="63" y="23" width="15" height="15" rx="7.5" fill="white" ></rect>
                     <rect x="23" y="63" width="15" height="15" rx="7.5" fill="white" ></rect>
                     <rect x="43" y="43" width="15" height="15" rx="7.5" fill="white" ></rect>`)
         case "six":
-            return (`
-                    <rect x="23" y="23" width="15" height="15" rx="7.5" fill="white" ></rect>
+            return (`<rect x="23" y="23" width="15" height="15" rx="7.5" fill="white" ></rect>
                     <rect x="63" y="63" width="15" height="15" rx="7.5" fill="white" ></rect>
                     <rect x="63" y="23" width="15" height="15" rx="7.5" fill="white" ></rect>
                     <rect x="23" y="63" width="15" height="15" rx="7.5" fill="white" ></rect>
