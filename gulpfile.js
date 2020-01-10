@@ -13,7 +13,7 @@ html = (cb) => {
 js = (cb) => {
     return src('index.js')
         .pipe(babel({
-            presets: ['@babel/preset-env']
+            presets: ['es2015']
         }))
         .pipe(uglify())
         .pipe(dest('dist'));
